@@ -29,10 +29,16 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-O2" />
+			<Add option="-std=c++0x" />
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="main.cc" />
+		<Unit filename="map_unit.cc" />
+		<Unit filename="map_unit.h" />
+		<Unit filename="world_map.cc" />
+		<Unit filename="world_map.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

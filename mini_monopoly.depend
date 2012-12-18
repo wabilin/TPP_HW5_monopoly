@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1355813442 source:/home/fate/Codes/TPP/mini_monopoly/map_unit.cc
+	"map_unit.h"
+
+1355815070 /home/fate/Codes/TPP/mini_monopoly/map_unit.h
+	<string>
+
+1355814828 source:/home/fate/Codes/TPP/mini_monopoly/main.cc
+	<iostream>
+	"map_unit.h"
+	"world_map.h"
+
+1355814794 /home/fate/Codes/TPP/mini_monopoly/world_map.h
+	<memory>
+	<vector>
+
+1355814541 source:/home/fate/Codes/TPP/mini_monopoly/world_map.cc
+	"world_map.h"
+
