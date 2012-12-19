@@ -6,11 +6,12 @@
 
 class MapUnit{
 public:
-    MapUnit();
+    explicit MapUnit(std::string name):_name_(name){}
     virtual ~MapUnit() = 0;
 
+    std::string name(){ return _name_; }
+
 protected:
-    int _id_;
     std::string _name_;
 
 private:

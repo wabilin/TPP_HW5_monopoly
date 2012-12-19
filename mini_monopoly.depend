@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1355813442 source:/home/fate/Codes/TPP/mini_monopoly/map_unit.cc
+1355816540 source:/home/fate/Codes/TPP/mini_monopoly/map_unit.cc
 	"map_unit.h"
 
-1355815070 /home/fate/Codes/TPP/mini_monopoly/map_unit.h
+1355817674 /home/fate/Codes/TPP/mini_monopoly/map_unit.h
 	<string>
 
 1355814828 source:/home/fate/Codes/TPP/mini_monopoly/main.cc
@@ -16,4 +16,35 @@
 
 1355814541 source:/home/fate/Codes/TPP/mini_monopoly/world_map.cc
 	"world_map.h"
+
+1355815431 source:/home/fate/Codes/TPP/mini_monopoly/collectable_unit.cc
+
+1355815675 source:/home/fate/Codes/TPP/mini_monopoly/jail_unit.cc
+	"jail_unit.h"
+
+1355815625 /home/fate/Codes/TPP/mini_monopoly/jail_unit.h
+
+1355814828 source:/home/fate/Codes/TPP/mini_monopoly/mini_monopoly.cc
+	<iostream>
+	"map_unit.h"
+	"world_map.h"
+
+1355815878 source:/home/fate/Codes/TPP/mini_monopoly/player.cc
+	"player.h"
+
+1355815913 /home/fate/Codes/TPP/mini_monopoly/player.h
+
+1355815584 source:/home/fate/Codes/TPP/mini_monopoly/random_cost_unit.cc
+	"random_cost_unit.h"
+
+1355815527 /home/fate/Codes/TPP/mini_monopoly/random_cost_unit.h
+
+1355815302 source:/home/fate/Codes/TPP/mini_monopoly/upgradable_unit.cc
+	"upgradable_unit.h"
+
+1355817736 /home/fate/Codes/TPP/mini_monopoly/upgradable_unit.h
+	<vector>
+	"map_unit.h"
+
+1355816015 source:/home/fate/Codes/TPP/mini_monopoly/world_player.cc
 

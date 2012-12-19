@@ -34,11 +34,23 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cc" />
+		<Unit filename="collectable_unit.cc" />
+		<Unit filename="collectable_unit.h" />
+		<Unit filename="jail_unit.cc" />
+		<Unit filename="jail_unit.h" />
 		<Unit filename="map_unit.cc" />
 		<Unit filename="map_unit.h" />
+		<Unit filename="mini_monopoly.cc" />
+		<Unit filename="player.cc" />
+		<Unit filename="player.h" />
+		<Unit filename="random_cost_unit.cc" />
+		<Unit filename="random_cost_unit.h" />
+		<Unit filename="upgradable_unit.cc" />
+		<Unit filename="upgradable_unit.h" />
 		<Unit filename="world_map.cc" />
 		<Unit filename="world_map.h" />
+		<Unit filename="world_player.cc" />
+		<Unit filename="world_player.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

@@ -4,9 +4,7 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char** argv)
 {
-    WorldMap m;
-    cout << "Hello world!" << endl;
     return 0;
 }
