@@ -2,7 +2,7 @@
 1355816540 source:/home/fate/Codes/TPP/mini_monopoly/map_unit.cc
 	"map_unit.h"
 
-1355817674 /home/fate/Codes/TPP/mini_monopoly/map_unit.h
+1356059163 /home/fate/Codes/TPP/mini_monopoly/map_unit.h
 	<string>
 
 1355814828 source:/home/fate/Codes/TPP/mini_monopoly/main.cc
@@ -24,7 +24,7 @@
 
 1355815625 /home/fate/Codes/TPP/mini_monopoly/jail_unit.h
 
-1355814828 source:/home/fate/Codes/TPP/mini_monopoly/mini_monopoly.cc
+1355820923 source:/home/fate/Codes/TPP/mini_monopoly/mini_monopoly.cc
 	<iostream>
 	"map_unit.h"
 	"world_map.h"
@@ -37,14 +37,18 @@
 1355815584 source:/home/fate/Codes/TPP/mini_monopoly/random_cost_unit.cc
 	"random_cost_unit.h"
 
-1355815527 /home/fate/Codes/TPP/mini_monopoly/random_cost_unit.h
+1356060005 /home/fate/Codes/TPP/mini_monopoly/random_cost_unit.h
+	"pay_unit.h"
 
-1355815302 source:/home/fate/Codes/TPP/mini_monopoly/upgradable_unit.cc
+1356059173 source:/home/fate/Codes/TPP/mini_monopoly/upgradable_unit.cc
 	"upgradable_unit.h"
 
-1355817736 /home/fate/Codes/TPP/mini_monopoly/upgradable_unit.h
+1356060018 /home/fate/Codes/TPP/mini_monopoly/upgradable_unit.h
 	<vector>
-	"map_unit.h"
+	"pay_unit.h"
 
 1355816015 source:/home/fate/Codes/TPP/mini_monopoly/world_player.cc
+
+1356060343 /home/fate/Codes/TPP/mini_monopoly/pay_unit.h
+	"map_unit.h"
 

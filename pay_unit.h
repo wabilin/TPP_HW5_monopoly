@@ -5,8 +5,14 @@
 
 class PayUnit : public MapUnit{
 public:
-    virtual int stop_cost() = 0;
-    virtual int buy_cost() = 0;
+    PayUnit(const std::string& name, int cost)
+      :MapUnit(name), _cost_(cost){}
+
+    virtual int fine() = 0;
+    int cost(){ return _cost_; }
+
+    void AskBuy(Player&);
+
 protected:
     int _cost_;
 };

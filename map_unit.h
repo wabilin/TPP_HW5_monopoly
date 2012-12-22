@@ -3,18 +3,19 @@
 
 #include <string>
 
+class Player;
 
 class MapUnit{
 public:
-    explicit MapUnit(std::string name):_name_(name){}
-    virtual ~MapUnit() = 0;
+    explicit MapUnit(const std::string& name):_name_(name){}
+    virtual ~MapUnit(){}
 
-    std::string name(){ return _name_; }
+    const std::string& name(){ return _name_; }
+
+    virtual void StopAct(Player&) = 0;
 
 protected:
     std::string _name_;
-
-private:
 };
 
 #endif // MAP_UNIT_H

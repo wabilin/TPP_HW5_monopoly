@@ -2,20 +2,23 @@
 #define UPGRADABLE_UNIT_H_INCLUDED
 
 #include <vector>
-#include "map_unit.h"
+#include "pay_unit.h"
 
-class UpgradableUnit : public MapUnit{
+class UpgradableUnit : public PayUnit{
 public:
     explicit UpgradableUnit
-    (int buy_cost, int upgrade_cost, std::vector<int> passing_costs);
+    (const std::string& name, int cost,
+     int upgrade_cost, const std::vector<int>& fines);
+    ~UpgradableUnit(){}
 
-    ~UpgradableUnit();
+    int fine(){ return _fines_[_level_]; }
+
+    bool CanUpgradeBy(const Player&);
 
 protected:
-    int _level_;
-    int _buy_cost_;
     int _upgrade_cost_;
-    std::vector<int> _passing_costs_;
+    int _level_;
+    std::vector<int> _fines_;
 };
 
 #endif // UPGRADABLE_UNIT_H_INCLUDED
