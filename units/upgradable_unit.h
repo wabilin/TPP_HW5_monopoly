@@ -11,14 +11,14 @@ public:
      int upgrade_cost, const std::vector<int>& fines);
     ~UpgradableUnit(){}
 
-    int fine(){ return _fines_[_level_]; }
+    int fine(){ return fines_[level_]; }
 
     bool CanUpgradeBy(const Player&);
 
 protected:
-    int _upgrade_cost_;
-    int _level_;
-    std::vector<int> _fines_;
+    int upgrade_cost_;
+    int level_;
+    std::vector<int> fines_;
 };
 
 #endif // UPGRADABLE_UNIT_H_INCLUDED

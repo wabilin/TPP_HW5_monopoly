@@ -1,10 +1,8 @@
-#include <iostream>
-#include "map_unit.h"
-#include "world_map.h"
+// Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
 
-using namespace std;
+// #include "map_unit.h"
+// #include "world_map.h"
 
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
     return 0;
 }

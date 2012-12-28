@@ -7,7 +7,7 @@ class RandomCostUnit : public PayUnit {
 public:
     int fine();
 protected:
-    int _base_fine_;
+    int base_fine_;
 };
 
 #endif // RANDOM_COST_UNIT_H_INCLUDED

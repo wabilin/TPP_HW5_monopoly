@@ -4,3 +4,4 @@ a.out
 *.o
 bin/*
 obj/*
+cpplint.py

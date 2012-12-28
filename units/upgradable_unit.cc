@@ -3,6 +3,6 @@
 UpgradableUnit::UpgradableUnit
 (const std::string& name, int cost, int upgrade_cost,
  const std::vector<int>& fines)
-  :PayUnit(name, cost), _upgrade_cost_(upgrade_cost),
-   _level_(0), _fines_(fines) {}
+  :PayUnit(name, cost), upgrade_cost_(upgrade_cost),
+   level_(0), fines_(fines) {}
 

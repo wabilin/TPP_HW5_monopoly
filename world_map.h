@@ -10,8 +10,12 @@ typedef std::unique_ptr<MapUnit> MapUnitPtr;
 
 class WorldMap{
 public:
+    WorldMap(const WorldMap&) = delete;
+    WorldMap();
+
+
 private:
-    std::vector<MapUnitPtr> _units_;
+    std::vector<MapUnitPtr> units_;
 };
 
 #endif // WORLD_MAP_H_INCLUDED
