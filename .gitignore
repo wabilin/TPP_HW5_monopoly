@@ -5,3 +5,6 @@ a.out
 bin/*
 obj/*
 cpplint.py
+*.layout
+*.depend
+

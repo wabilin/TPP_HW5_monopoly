@@ -11,8 +11,6 @@ typedef std::unique_ptr<MapUnit> MapUnitPtr;
 class WorldMap{
 public:
     WorldMap(const WorldMap&) = delete;
-    WorldMap();
-
 
 private:
     std::vector<MapUnitPtr> units_;
