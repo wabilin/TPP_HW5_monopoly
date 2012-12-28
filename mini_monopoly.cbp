@@ -36,8 +36,8 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="mini_monopoly.cc" />
-		<Unit filename="player.cc" />
-		<Unit filename="player.h" />
+		<Unit filename="player/player.cc" />
+		<Unit filename="player/player.h" />
 		<Unit filename="units/collectable_unit.cc" />
 		<Unit filename="units/collectable_unit.h" />
 		<Unit filename="units/jail_unit.cc" />
@@ -49,10 +49,10 @@
 		<Unit filename="units/random_cost_unit.h" />
 		<Unit filename="units/upgradable_unit.cc" />
 		<Unit filename="units/upgradable_unit.h" />
-		<Unit filename="world_map.cc" />
-		<Unit filename="world_map.h" />
-		<Unit filename="world_player.cc" />
-		<Unit filename="world_player.h" />
+		<Unit filename="world/world_map.cc" />
+		<Unit filename="world/world_map.h" />
+		<Unit filename="world/world_player.cc" />
+		<Unit filename="world/world_player.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
