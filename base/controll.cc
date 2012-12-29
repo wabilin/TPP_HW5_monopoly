@@ -1,24 +1,25 @@
+// Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
 #include "base/controll.h"
 #include <cstdio>
 #include <cstdlib>
 
 #ifdef __unix__
- #include <termios.h>
- #include <unistd.h>
-int unix_getch(){
+  #include <termios.h>
+  #include <unistd.h>
+int unix_getch() {
     struct termios oldt, newt;
     int ch;
-    tcgetattr( STDIN_FILENO, &oldt );
+    tcgetattr(STDIN_FILENO, &oldt);
     newt = oldt;
-    newt.c_lflag &= ~( ICANON | ECHO );
-    tcsetattr( STDIN_FILENO, TCSANOW, &newt );
+    newt.c_lflag &= ~(ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
     ch = getchar();
-    tcsetattr( STDIN_FILENO, TCSANOW, &oldt );
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
     return ch;
 }
 #endif
 
-void Pause(){
+void Pause() {
 #ifdef __unix__
     printf("Press Enter key to continue...");
     unix_getch();
@@ -32,7 +33,7 @@ void Pause(){
 #endif
 }
 
-void Clear(){
+void ClearScreen() {
     #ifdef __unix__
     system("clear");
   #else
@@ -40,7 +41,7 @@ void Clear(){
     system("cls");
     #else
     static const int kHeight = 24;
-    for(int i = 0 ; i < kHeight ; ++i) {
+    for (int i = 0 ; i < kHeight ; ++i) {
         putchar('\n');
     }
     #endif

@@ -2,5 +2,5 @@
 #include <string>
 using std::string;
 
-Player::Player(int id, const string& name)
-  :id_(id), name_(name) {}
+Player::Player(int id, const string& name, int money)
+  :id_(id), name_(name), money_(money), units_num_(0), move_point_(0) {}
