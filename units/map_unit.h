@@ -13,7 +13,7 @@ class MapUnit {
 
     const std::string& name() { return name_; }
 
-    virtual void StopAct(Player&) = 0;
+    virtual void StopAct(Player*) = 0;
 
  protected:
     std::string name_;

@@ -1,19 +1,17 @@
-#ifndef WORLD_MAP_H_INCLUDED
-#define WORLD_MAP_H_INCLUDED XD
+#ifndef WORLD_MAP_H_
+#define WORLD_MAP_H_
 
-#include <memory>
 #include <vector>
 
 class MapUnit;
 
-typedef std::unique_ptr<MapUnit> MapUnitPtr;
-
 class WorldMap{
 public:
     WorldMap(const WorldMap&) = delete;
+    virtual ~WorldMap();
 
 private:
-    std::vector<MapUnitPtr> units_;
+    std::vector<MapUnit*> units_;
 };
 
 #endif // WORLD_MAP_H_INCLUDED

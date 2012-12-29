@@ -14,7 +14,7 @@
 				<Compiler>
 					<Add option="-Wall" />
 					<Add option="-g" />
-					<Add directory="../momoply" />
+					<Add directory="./" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -36,6 +36,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="base/controll.cc" />
+		<Unit filename="base/controll.h" />
 		<Unit filename="mini_monopoly.cc" />
 		<Unit filename="player/player.cc" />
 		<Unit filename="player/player.h" />

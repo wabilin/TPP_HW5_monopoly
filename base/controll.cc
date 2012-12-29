@@ -34,7 +34,7 @@ void Pause() {
 }
 
 void ClearScreen() {
-    #ifdef __unix__
+#ifdef __unix__
     system("clear");
   #else
     #ifdef _WIN32

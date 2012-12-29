@@ -1,6 +1,14 @@
-#ifndef JAIL_UNIT_H_INCLUDED
-#define JAIL_UNIT_H_INCLUDED
+// Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
+#ifndef UNITS_JAIL_UNIT_H_
+#define UNITS_JAIL_UNIT_H_
 
+#include <string>
+#include "units/map_unit.h"
 
+class JailUnit : public MapUnit {
+ public:
+    explicit JailUnit(const std::string& name):MapUnit(name) {}
+    void StopAct(Player* player);
+};
 
-#endif // JAIL_UNIT_H_INCLUDED
+#endif  // UNITS_JAIL_UNIT_H_
