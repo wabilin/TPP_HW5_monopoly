@@ -1,11 +1,6 @@
 #include "player/player.h"
+#include <string>
+using std::string;
 
-Player::Player()
-{
-    //ctor
-}
-
-Player::~Player()
-{
-    //dtor
-}
+Player::Player(int id, const string& name)
+  :id_(id), name_(name) {}

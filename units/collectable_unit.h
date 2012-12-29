@@ -1,11 +1,11 @@
-#ifndef COLLECTABLE_UNIT_H_INCLUDED
-#define COLLECTABLE_UNIT_H_INCLUDED
+#ifndef UNITS_COLLECTABLE_UNIT_H_
+#define UNITS_COLLECTABLE_UNIT_H_
 
-#include <pay_unit.h>
+#include "units/pay_unit.h"
 
 class CollectableUnit : PayUnit{
-public:
-protected:
+ public:
+ protected:
 };
 
-#endif // COLLECTABLE_UNIT_H_INCLUDED
+#endif  // UNITS_COLLECTABLE_UNIT_H_

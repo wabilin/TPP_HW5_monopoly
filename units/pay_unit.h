@@ -2,7 +2,9 @@
 #ifndef UNITS_PAY_UNIT_H_
 #define UNITS_PAY_UNIT_H_
 #include <string>
-#include "./map_unit.h"
+#include "units/map_unit.h"
+
+// A virtual class for cost units
 
 class PayUnit : public MapUnit {
  public:
@@ -12,11 +14,13 @@ class PayUnit : public MapUnit {
     virtual int fine()const = 0;
     int cost()const { return cost_; }
 
-    void AskBuy(Player&);
-    void AskPay(Player&);
+    // used in StopAct() by children
+    void AskBuy(Player*);
+    void AskPay(Player*);
 
  protected:
     int cost_;
+
 };
 
 #endif  // UNITS_PAY_UNIT_H_

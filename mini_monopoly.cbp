@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-Wall" />
 					<Add option="-g" />
+					<Add directory="../momoply" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -44,6 +45,7 @@
 		<Unit filename="units/jail_unit.h" />
 		<Unit filename="units/map_unit.cc" />
 		<Unit filename="units/map_unit.h" />
+		<Unit filename="units/pay_unit.cc" />
 		<Unit filename="units/pay_unit.h" />
 		<Unit filename="units/random_cost_unit.cc" />
 		<Unit filename="units/random_cost_unit.h" />
