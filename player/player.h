@@ -7,18 +7,19 @@
 class Player {
  public:
     Player(int id, const std::string& name, int money);
-    virtual ~Player(){}
+    virtual ~Player() {}
 
     int id() const { return id_; }
     const std::string& name()const { return name_; }
-    int  move_point() const { return move_point_; }
-    void set_move_point(int p) { move_point_ = p; }
-    int money() const { return money_; }
-    int  units_num() const { return units_num_; }
-    void units_num_inc() { ++units_num_; }
 
-    void Gain(int m)  { money_ += m; }
-    void Pay(int m) { money_ -= m; }
+    int  move_point() const    { return move_point_; }
+    void set_move_point(int p) { move_point_ = p; }
+    int  units_num() const     { return units_num_; }
+    void units_num_inc()       { ++units_num_; }
+
+    int money() const { return money_; }
+    void Gain(int money) { money_ += money; }
+    void Pay (int money) { money_ -= money; }
 
     bool Crash() const { return money() <= 0; }
 

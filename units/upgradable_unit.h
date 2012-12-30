@@ -7,11 +7,11 @@
 class UpgradableUnit : public PayUnit{
 public:
     explicit UpgradableUnit
-    (const std::string& name, int cost,
+    (const std::string& name, int player_num, int cost,
      int upgrade_cost, const std::vector<int>& fines);
     ~UpgradableUnit(){}
 
-    int fine(){ return fines_[level_]; }
+    int fine()const { return fines_[level_]; }
 
     bool CanUpgradeBy(const Player&);
 

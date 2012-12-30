@@ -8,6 +8,10 @@
 #include "base/controll.h"
 using std::string;
 
+PayUnit::PayUnit(const std::string& name, int player_num, int cost)
+  :MapUnit(name, player_num), cost_(cost), owner_(nullptr) {}
+
+
 const string& PayUnit::owner_name() const {
     return owner_->name();
 }
@@ -16,22 +20,22 @@ int PayUnit::owner_id() const {
     return owner_->id();
 }
 
-void PayUnit::AskBuy(Player* player) {
+void PayUnit::AskBuy(Player* traveler) {
     static const size_t kMsgLength = 128;
     char msg[kMsgLength] = {'\0'};
 
     printf("%s, do you want to buy %s? (1: Yes [default] / 2: No) ...>",
-           player->name().c_str(), this->name().c_str());
+           traveler->name().c_str(), this->name().c_str());
     fgets(msg, kMsgLength, stdin);
 
     // do not buy
-    if(toupper(msg[0]) == 'N') {
+    if (toupper(msg[0]) == 'N') {
         return;
     }
 
-    // to buy
-    player->Pay(cost());
-    owner_ = player;
+    // buy
+    traveler->Pay(cost());
+    owner_ = traveler;
     printf("You pay $%d to buy %s\n",  cost(), name().c_str());
     Pause();
 }
