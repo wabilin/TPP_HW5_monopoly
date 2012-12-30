@@ -21,7 +21,11 @@ int PayUnit::owner_id() const {
 }
 
 bool PayUnit::CanBuyBy(const Player* traveler) const {
-    return traveler->money() > cost();
+    return Abandoned() && traveler->money() > cost();
+}
+
+bool PayUnit::NeedFine(const Player* traveler)const {
+    return !Abandoned() && owner_id() != traveler->id();
 }
 
 void PayUnit::AskBuy(Player* traveler) {
@@ -33,14 +37,12 @@ void PayUnit::AskBuy(Player* traveler) {
         traveler->Pay(cost());
         owner_ = traveler;
         printf("You pay $%d to buy %s\n",  cost(), name().c_str());
-        Pause();
     }
 }
 
 void PayUnit::AskPay(Player* traveler) const {
     printf("%s, you must pay $%d to Player %d (%s)\n",
            traveler->name().c_str(), fine(), owner_id(), owner_name().c_str());
-    Pause();
 
     traveler->Pay(fine());
     owner_->Gain(fine());

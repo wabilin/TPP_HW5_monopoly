@@ -36,5 +36,13 @@ void UpgradableUnit::Upgrade() {
 }
 
 void UpgradableUnit::TravelEven(Player* traveler) {
-
+    if (CanBuyBy(traveler)) {
+        AskBuy(traveler);
+    }
+    else if (CanUpgradeBy(traveler)) {
+        AskUpgrade();
+    }
+    else if (NeedFine(traveler)) {
+        AskPay(traveler);
+    }
 }

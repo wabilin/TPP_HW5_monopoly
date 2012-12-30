@@ -16,7 +16,9 @@ class PayUnit : public MapUnit {
     const std::string& owner_name()const;
     int owner_id()const;
 
+    bool Abandoned() const { return owner_ == nullptr; }
     bool CanBuyBy(const Player* traveler) const;
+    bool NeedFine(const Player* traveler) const;
     virtual void Release() = 0;
 
     // used in TravelEven() by children
