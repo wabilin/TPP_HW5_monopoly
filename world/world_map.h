@@ -2,6 +2,7 @@
 #define WORLD_MAP_H_
 
 #include <vector>
+#include <cstdio>
 
 class MapUnit;
 class Player;
@@ -11,6 +12,8 @@ class WorldMap {
     WorldMap(const WorldMap&) = delete;
     explicit WorldMap(int players_num);
     virtual ~WorldMap();
+
+    void LoadMap(FILE* map_file);
 
  private:
     std::vector<MapUnit*> units_;

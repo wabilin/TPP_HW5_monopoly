@@ -3,21 +3,23 @@
 #ifndef UNITS_UPGRADABLE_UNIT_H_
 #define UNITS_UPGRADABLE_UNIT_H_
 
-#include <vector>
+#include <array>
 #include <string>
 #include "units/pay_unit.h"
 
 class UpgradableUnit : public PayUnit {
  public:
+    static const int kLevelNum = 5;
+
     explicit UpgradableUnit
     (int id, const std::string& name, int player_num, int cost,
-     int upgrade_cost, const std::vector<int>& fines);
+     int upgrade_cost, const std::array<int, kLevelNum>& fines);
     ~UpgradableUnit() {}
 
-    int fine()const { return fines_[level_]; }
+
     int upgrade_cost()const { return upgrade_cost_; }
     int level() const { return level_;  }
-    int highest_level()const { return fines_.size() - 1; }
+    static int highest_level() { return kLevelNum - 1; }
 
     bool CanUpgradeBy(const Player* traveler) const;
 
@@ -25,10 +27,14 @@ class UpgradableUnit : public PayUnit {
     void TravelEven(Player* traveler);
     void PrintInfo() const;
 
+    // override PayUnit
+    int  fine()const { return fines_[level_]; }
+    void Release();
+
  protected:
-    int upgrade_cost_;
+    const int upgrade_cost_;
     int level_;
-    std::vector<int> fines_;
+    const std::array<int, kLevelNum> fines_;
 
     // ask owner to upgrade or not, if Yes, call Upgrade()
     void AskUpgrade();

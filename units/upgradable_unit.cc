@@ -1,11 +1,15 @@
 // Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
 #include "units/upgradable_unit.h"
+#include <string>
+#include <array>
 #include "player/player.h"
 #include "base/controll.h"
+using std::string;
+using std::array;
 
 UpgradableUnit::UpgradableUnit
-(int id, const std::string& name, int player_num,  int cost,
-  int upgrade_cost, const std::vector<int>& fines)
+(int id, const string& name, int player_num,  int cost,
+  int upgrade_cost, const array<int, kLevelNum>& fines)
     :PayUnit(id, name, player_num, cost), upgrade_cost_(upgrade_cost),
      level_(0), fines_(fines) {}
 
@@ -64,4 +68,9 @@ void UpgradableUnit::PrintInfo() const {
     } else {
         printf("(%d) U$%5d L%d", owner_id(), upgrade_cost(), level());
     }
+}
+
+void UpgradableUnit::Release() {
+    level_ = 0;
+    owner_ = nullptr;
 }
