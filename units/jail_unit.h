@@ -7,7 +7,7 @@
 
 class JailUnit : public MapUnit {
  public:
-    explicit JailUnit(const std::string& name, int player_num);
+    explicit JailUnit(int id, const std::string& name, int player_num);
     void StopAct(Player* player);
 };
 

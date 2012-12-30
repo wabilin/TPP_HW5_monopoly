@@ -9,18 +9,20 @@ class Player;
 
 class MapUnit {
  public:
-    explicit MapUnit(const std::string& name, int player_num);
+    explicit MapUnit(int id, const std::string& name, int player_num);
     virtual ~MapUnit() {}
 
-    const std::string& name() { return name_; }
+    int id() const { return id_; }
+    const std::string& name() const { return name_; }
 
-    virtual void PrintInfo () = 0;
+    virtual void PrintInfo () const = 0;
 
     // call even while a player is traveling the unit
     virtual void TravelEven(Player* traveler) = 0;
 
  protected:
-    std::string name_;
+    const int id_;
+    const std::string name_;
     std::vector<bool> here_players_;
 };
 

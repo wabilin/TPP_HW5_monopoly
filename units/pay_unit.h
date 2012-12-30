@@ -8,7 +8,7 @@
 
 class PayUnit : public MapUnit {
  public:
-    PayUnit(const std::string& name, int player_num, int cost);
+    PayUnit(int id, const std::string& name, int player_num, int cost);
 
     virtual int fine() const = 0;
     int cost()const { return cost_; }
@@ -21,13 +21,13 @@ class PayUnit : public MapUnit {
     bool NeedFine(const Player* traveler) const;
     virtual void Release() = 0;
 
-    // used in TravelEven() by children
-    void AskBuy(Player* traveler);
-    void AskPay(Player* traveler) const;
-
  protected:
     int cost_;
     Player* owner_;
+
+    // used in TravelEven() by children
+    void AskBuy(Player* traveler);
+    void AskPay(Player* traveler) const;
 };
 
 #endif  // UNITS_PAY_UNIT_H_

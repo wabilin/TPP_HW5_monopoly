@@ -3,6 +3,9 @@
 #define PLAYER_PLAYER_H_
 
 #include <string>
+#include <vector>
+
+class PayUnit;
 
 class Player {
  public:
@@ -14,20 +17,20 @@ class Player {
 
     int  move_point() const    { return move_point_; }
     void set_move_point(int p) { move_point_ = p; }
-    int  units_num() const     { return units_num_; }
-    void units_num_inc()       { ++units_num_; }
+    int  units_num() const     { return units_.size(); }
 
     int  money() const { return money_; }
     void Gain(int money) { money_ += money; }
     void Pay (int money) { money_ -= money; }
+    void AddUnit(PayUnit* unit) { units_.push_back(unit); }
 
-    bool Crash() const { return money() <= 0; }
+    bool Crash() const { return money() < 0; }
 
  private:
-    int id_;
+    const int id_;
     std::string name_;
     int money_;
-    int units_num_;
+    std::vector<PayUnit*> units_;
 
     // times that player can dice in a turn
     int move_point_;

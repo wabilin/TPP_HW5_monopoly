@@ -2,7 +2,6 @@
 #include "base/controll.h"
 #include <cstdio>
 #include <cstdlib>
-#include <cctype>
 
 #ifdef __unix__
   #include <termios.h>
@@ -54,5 +53,5 @@ bool GetYesOrNo() {
     char msg[kMaxMsgLength] = {'\0'};
     fgets(msg, kMaxMsgLength, stdin);
 
-    return toupper(msg[0]) != 'N';
+    return msg[0] != '2';
 }

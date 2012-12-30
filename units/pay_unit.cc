@@ -8,8 +8,8 @@
 #include "base/controll.h"
 using std::string;
 
-PayUnit::PayUnit(const std::string& name, int player_num, int cost)
-  :MapUnit(name, player_num), cost_(cost), owner_(nullptr) {}
+PayUnit::PayUnit(int id, const std::string& name, int player_num, int cost)
+  :MapUnit(id, name, player_num), cost_(cost), owner_(nullptr) {}
 
 
 const string& PayUnit::owner_name() const {
@@ -36,6 +36,7 @@ void PayUnit::AskBuy(Player* traveler) {
     if (GetYesOrNo()) {
         traveler->Pay(cost());
         owner_ = traveler;
+        traveler->AddUnit(this);
         printf("You pay $%d to buy %s\n",  cost(), name().c_str());
     }
 }
