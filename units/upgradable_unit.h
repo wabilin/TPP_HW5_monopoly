@@ -12,8 +12,18 @@ public:
     ~UpgradableUnit(){}
 
     int fine()const { return fines_[level_]; }
+    int upgrade_cost()const { return upgrade_cost_; }
+    int level() const { return level_;  }
+    int highest_level()const { return fines_.size() - 1; }
 
-    bool CanUpgradeBy(const Player&);
+    bool CanUpgradeBy(const Player* traveler) const;
+    void AskUpgrade();
+
+    // make owner pay and level up
+    void Upgrade();
+
+    // override MapUnit
+    void TravelEven(Player* traveler);
 
 protected:
     int upgrade_cost_;

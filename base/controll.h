@@ -7,4 +7,7 @@ void Pause();
 
 void ClearScreen();
 
+// get [Y/N] from user input, default is Yes
+bool GetYesOrNo();
+
 #endif  // BASE_CONTROLL_H_

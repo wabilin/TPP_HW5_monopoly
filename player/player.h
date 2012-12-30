@@ -17,7 +17,7 @@ class Player {
     int  units_num() const     { return units_num_; }
     void units_num_inc()       { ++units_num_; }
 
-    int money() const { return money_; }
+    int  money() const { return money_; }
     void Gain(int money) { money_ += money; }
     void Pay (int money) { money_ -= money; }
 

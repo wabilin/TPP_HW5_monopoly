@@ -20,24 +20,21 @@ int PayUnit::owner_id() const {
     return owner_->id();
 }
 
-void PayUnit::AskBuy(Player* traveler) {
-    static const size_t kMsgLength = 128;
-    char msg[kMsgLength] = {'\0'};
+bool PayUnit::CanBuyBy(const Player* traveler) const {
+    return traveler->money() > cost();
+}
 
+void PayUnit::AskBuy(Player* traveler) {
     printf("%s, do you want to buy %s? (1: Yes [default] / 2: No) ...>",
            traveler->name().c_str(), this->name().c_str());
-    fgets(msg, kMsgLength, stdin);
-
-    // do not buy
-    if (toupper(msg[0]) == 'N') {
-        return;
-    }
 
     // buy
-    traveler->Pay(cost());
-    owner_ = traveler;
-    printf("You pay $%d to buy %s\n",  cost(), name().c_str());
-    Pause();
+    if (GetYesOrNo()) {
+        traveler->Pay(cost());
+        owner_ = traveler;
+        printf("You pay $%d to buy %s\n",  cost(), name().c_str());
+        Pause();
+    }
 }
 
 void PayUnit::AskPay(Player* traveler) const {

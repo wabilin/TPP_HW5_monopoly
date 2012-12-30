@@ -15,7 +15,9 @@ class MapUnit {
     const std::string& name() { return name_; }
 
     virtual void PrintInfo () = 0;
-    virtual void StopAct(Player*) = 0;
+
+    // call even while a player is traveling the unit
+    virtual void TravelEven(Player* traveler) = 0;
 
  protected:
     std::string name_;

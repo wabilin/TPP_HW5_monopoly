@@ -16,7 +16,10 @@ class PayUnit : public MapUnit {
     const std::string& owner_name()const;
     int owner_id()const;
 
-    // used in StopAct() by children
+    bool CanBuyBy(const Player* traveler) const;
+    virtual void Release() = 0;
+
+    // used in TravelEven() by children
     void AskBuy(Player* traveler);
     void AskPay(Player* traveler) const;
 

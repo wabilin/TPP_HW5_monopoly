@@ -2,6 +2,7 @@
 #include "base/controll.h"
 #include <cstdio>
 #include <cstdlib>
+#include <cctype>
 
 #ifdef __unix__
   #include <termios.h>
@@ -46,4 +47,12 @@ void ClearScreen() {
     }
     #endif
 #endif
+}
+
+bool GetYesOrNo() {
+    static const size_t kMaxMsgLength = 128;
+    char msg[kMaxMsgLength] = {'\0'};
+    fgets(msg, kMaxMsgLength, stdin);
+
+    return toupper(msg[0]) != 'N';
 }
