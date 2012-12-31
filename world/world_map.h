@@ -1,5 +1,6 @@
-#ifndef WORLD_MAP_H_
-#define WORLD_MAP_H_
+// Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
+#ifndef WORLD_WORLD_MAP_H_
+#define WORLD_WORLD_MAP_H_
 
 #include <vector>
 #include <cstdio>
@@ -14,10 +15,11 @@ class WorldMap {
     virtual ~WorldMap();
 
     void LoadMap(FILE* map_file);
+    void Print()const;
 
  private:
     std::vector<MapUnit*> units_;
     int players_num_;
 };
 
-#endif // WORLD_MAP_H_INCLUDED
+#endif  // WORLD_WORLD_MAP_H_

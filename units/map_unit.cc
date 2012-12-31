@@ -3,3 +3,20 @@
 
 MapUnit::MapUnit(int id, const std::string& name, int player_num)
   :id_(id), name_(name), here_players_(player_num, false) {}
+
+
+void MapUnit::PrintBasicInfo()const {
+    // show player here
+    putchar('=');
+    for (size_t i = 0 ; i < here_players_.size() ; ++i) {
+        if (here_players_[i]) {
+            printf("%d", static_cast<int>(i));  // cast to avoid compiler warning
+        } else {
+            printf(" ");
+        }
+    }
+    putchar('=');
+
+    // show unit name & id
+    printf("  [%d]%10s ", id(), name().c_str());
+}

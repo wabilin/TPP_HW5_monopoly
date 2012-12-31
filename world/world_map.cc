@@ -1,4 +1,5 @@
-#include "world_map.h"
+// Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
+#include "world/world_map.h"
 #include <stddef.h>
 #include <sstream>
 #include <string>
@@ -6,6 +7,7 @@
 #include <array>
 #include "units/map_unit.h"
 #include "units/upgradable_unit.h"
+
 using std::string;
 using std::vector;
 using std::array;
@@ -27,7 +29,7 @@ void WorldMap::LoadMap(FILE* file) {
     int id = 0;
     string name;
     char unit_symbol;
-    while(fgets(line, kLineLength, file)) {
+    while (fgets(line, kLineLength, file)) {
         stringstream ss(line);
         ss >> unit_symbol >> name;
 
@@ -36,11 +38,11 @@ void WorldMap::LoadMap(FILE* file) {
             int cost, upgrade_cost;
             array<int, UpgradableUnit::kLevelNum> fines;
             ss >> cost >> upgrade_cost;
-            for(auto& fine : fines) {
+            for (auto& fine : fines) {
                 ss >> fine;
             }
-            units_.push_back
-              (new UpgradableUnit(id, name, players_num_, cost, upgrade_cost, fines));
+            units_.push_back(new UpgradableUnit
+                (id, name, players_num_, cost, upgrade_cost, fines));
         break;
 
         default:
@@ -49,5 +51,20 @@ void WorldMap::LoadMap(FILE* file) {
         }
 
         ++id;
+    }
+
+    if (units_.size() % 2 != 0) {
+        perror("Error at WorldMap::LoadMap: Odd num units.\n");
+    }
+}
+
+void WorldMap::Print()const {
+    const size_t kHalfNum = units_.size() / 2;
+    const size_t kLastId = units_.size() - 1;
+    for (size_t i = 0 ; i < kHalfNum ; ++i) {
+        units_[i]->PrintInfo();
+        printf("    ");
+        units_[kLastId- i]->PrintInfo();
+        putchar('\n');
     }
 }

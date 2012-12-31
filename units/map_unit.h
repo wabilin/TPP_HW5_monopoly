@@ -24,6 +24,9 @@ class MapUnit {
     const int id_;
     const std::string name_;
     std::vector<bool> here_players_;
+
+    // print players here and unit id & name
+    void PrintBasicInfo() const;
 };
 
 #endif  // MAP_UNIT_H_

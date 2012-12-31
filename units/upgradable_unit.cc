@@ -51,17 +51,7 @@ void UpgradableUnit::TravelEven(Player* traveler) {
 }
 
 void UpgradableUnit::PrintInfo() const {
-    putchar('=');
-    for (size_t i = 0 ; i < here_players_.size() ; ++i) {
-        if (here_players_[i]) {
-            printf("%d", static_cast<int>(i));  // cast to avoid compiler warning
-        } else {
-            printf(" ");
-        }
-    }
-    putchar('=');
-
-    printf("  [%d]%10s ", id(), name().c_str());
+    PrintBasicInfo();
 
     if (Abandoned()) {
         printf("    B$%5d   ", cost());
