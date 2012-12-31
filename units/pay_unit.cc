@@ -8,8 +8,8 @@
 #include "base/controll.h"
 using std::string;
 
-PayUnit::PayUnit(int id, const std::string& name, int player_num, int cost)
-  :MapUnit(id, name, player_num), cost_(cost), owner_(nullptr) {}
+PayUnit::PayUnit(int id, const std::string& name, int players_num, int cost)
+  :MapUnit(id, name, players_num), cost_(cost), owner_(nullptr) {}
 
 
 const string& PayUnit::owner_name() const {

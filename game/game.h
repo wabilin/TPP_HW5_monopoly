@@ -14,6 +14,7 @@ class Game {
     Game();
     ~Game();
     void InitGame(FILE* map_file);
+    void MainLoop();
 
  private:
     WorldMap* map_;

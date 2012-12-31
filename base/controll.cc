@@ -62,7 +62,7 @@ bool GetYesOrNo() {
     return msg[0] != '2';
 }
 
-string GetLine(const int max_length, FILE* fptr) {
+string GetLine(FILE* fptr, const int max_length) {
     char line[max_length], *s_ptr;
     s_ptr = fgets(line, max_length, fptr);
     if (!s_ptr) {

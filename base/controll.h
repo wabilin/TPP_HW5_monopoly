@@ -16,6 +16,6 @@ void ClearScreen();
 bool GetYesOrNo();
 
 // use C stdio getline safely
-std::string GetLine(const int max_length = 256, FILE* fptr = stdin);
+std::string GetLine(FILE* fptr = stdin, const int max_length = 256);
 
 #endif  // BASE_CONTROLL_H_

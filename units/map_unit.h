@@ -9,7 +9,7 @@ class Player;
 
 class MapUnit {
  public:
-    explicit MapUnit(int id, const std::string& name, int player_num);
+    explicit MapUnit(int id, const std::string& name, int players_num);
     virtual ~MapUnit() {}
 
     int id() const { return id_; }

@@ -8,7 +8,7 @@
 
 class PayUnit : public MapUnit {
  public:
-    PayUnit(int id, const std::string& name, int player_num, int cost);
+    PayUnit(int id, const std::string& name, int players_num, int cost);
 
     virtual int fine() const = 0;
     int cost()const { return cost_; }

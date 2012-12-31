@@ -8,9 +8,9 @@ using std::string;
 using std::array;
 
 UpgradableUnit::UpgradableUnit
-(int id, const string& name, int player_num,  int cost,
+(int id, const string& name, int players_num,  int cost,
   int upgrade_cost, const array<int, kLevelNum>& fines)
-    :PayUnit(id, name, player_num, cost), upgrade_cost_(upgrade_cost),
+    :PayUnit(id, name, players_num, cost), upgrade_cost_(upgrade_cost),
      level_(0), fines_(fines) {}
 
 bool UpgradableUnit::CanUpgradeBy(const Player* traveler) const {

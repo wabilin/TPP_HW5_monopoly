@@ -12,7 +12,7 @@ class UpgradableUnit : public PayUnit {
     static const int kLevelNum = 5;
 
     explicit UpgradableUnit
-    (int id, const std::string& name, int player_num, int cost,
+    (int id, const std::string& name, int players_num, int cost,
      int upgrade_cost, const std::array<int, kLevelNum>& fines);
     ~UpgradableUnit() {}
 
