@@ -38,6 +38,8 @@
 		</Compiler>
 		<Unit filename="base/controll.cc" />
 		<Unit filename="base/controll.h" />
+		<Unit filename="base/random_gen.cc" />
+		<Unit filename="base/random_gen.h" />
 		<Unit filename="game/game.cc" />
 		<Unit filename="game/game.h" />
 		<Unit filename="mini_monopoly.cc" />

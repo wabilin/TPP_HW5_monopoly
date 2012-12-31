@@ -17,7 +17,6 @@ class Game {
     ~Game();
     void InitGame(FILE* map_file);
     void MainLoop();
-    int  Dice() const;
 
  private:
     // pointers to new map and new players
@@ -28,6 +27,7 @@ class Game {
 
     void PrintGameInfo();
     void DiceAndMove(Player* player);
+    int  Dice() const;
 
     static const int kStartMoney = 30000;
     static const int kDiceSurface = 6;

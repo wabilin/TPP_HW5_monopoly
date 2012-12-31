@@ -66,7 +66,6 @@ string GetLine(FILE* fptr, const int max_length) {
     char line[max_length], *s_ptr;
     s_ptr = fgets(line, max_length, fptr);
     if (!s_ptr) {
-        perror("Error at GetLine: EOF or read error.\n");
         return string("");
     }
 

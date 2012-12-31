@@ -2,8 +2,9 @@
 #ifndef WORLD_WORLD_MAP_H_
 #define WORLD_WORLD_MAP_H_
 
-#include <vector>
 #include <cstdio>
+#include <vector>
+#include <string>
 
 class MapUnit;
 class Player;
@@ -34,6 +35,9 @@ class WorldMap {
 
     // init location, should called by LoadMap()
     void InitPlayersLocation();
+
+    // parse the string(unit info), return a new MapUnit object
+    MapUnit* NewUnitByString(const std::string& unit_info, const int id);
 };
 
 #endif  // WORLD_WORLD_MAP_H_

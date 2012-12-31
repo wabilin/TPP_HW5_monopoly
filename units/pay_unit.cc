@@ -42,9 +42,10 @@ void PayUnit::AskBuy(Player* traveler) {
 }
 
 void PayUnit::AskPay(Player* traveler) const {
+    int fixed_fine = fine();
     printf("%s, you must pay $%d to Player %d (%s)\n",
-           traveler->name().c_str(), fine(), owner_id(), owner_name().c_str());
+           traveler->name().c_str(), fixed_fine, owner_id(), owner_name().c_str());
 
-    traveler->Pay(fine());
-    owner_->Gain(fine());
+    traveler->Pay(fixed_fine);
+    owner_->Gain(fixed_fine);
 }

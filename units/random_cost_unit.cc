@@ -1,7 +1,13 @@
-#include "random_cost_unit.h"
+// Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
+
+#include "units/random_cost_unit.h"
 #include "base/random_gen.h"
 
 RandomGen RandomCostUnit::s_dice_(1, kDiceSurface);
+
+RandomCostUnit::RandomCostUnit
+(int id, const std::string& name, int players_num, int cost, int base_fine)
+  :PayUnit(id, name, players_num, cost), base_fine_(base_fine) {}
 
 void RandomCostUnit::TravelEven(Player* traveler) {
     if (CanBuyBy(traveler)) {
@@ -10,6 +16,7 @@ void RandomCostUnit::TravelEven(Player* traveler) {
         AskPay(traveler);
     }
 }
+
 void RandomCostUnit::PrintInfo() const {
     PrintBasicInfo();
 
