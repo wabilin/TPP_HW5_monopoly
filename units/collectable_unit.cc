@@ -27,7 +27,7 @@ void CollectableUnit::TravelEven(Player* traveler) {
 
         // traveler bought this unit
         if (!Abandoned()) {
-            ++s_players_cunits_map[owner_id()];
+            owner_cunits_num_inc();
         }
     } else if (NeedFine(traveler)) {
         AskPay(traveler);
@@ -48,6 +48,6 @@ int CollectableUnit::owner_cunits_num() const {
     return s_players_cunits_map[owner_id()];
 }
 
-int& CollectableUnit::owner_cunits_num() {
-    return s_players_cunits_map[owner_id()];
+void CollectableUnit::owner_cunits_num_inc() {
+    ++s_players_cunits_map[owner_id()];
 }

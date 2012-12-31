@@ -27,7 +27,7 @@ class CollectableUnit : public PayUnit {
     static std::map<int, int> s_players_cunits_map;
 
     int  owner_cunits_num() const;
-    int& owner_cunits_num();
+    void owner_cunits_num_inc();
 };
 
 #endif  // UNITS_COLLECTABLE_UNIT_H_
