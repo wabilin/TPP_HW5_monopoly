@@ -1,17 +1,17 @@
 // Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
 #include "base/controll.h"
+  #ifdef __unix__
+    #include <termios.h>
+    #include <unistd.h>
+  #endif
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <string>
 
-#include <memory>
-
 using std::string;
 
 #ifdef __unix__
-  #include <termios.h>
-  #include <unistd.h>
 int unix_getch() {
     struct termios oldt, newt;
     int ch;

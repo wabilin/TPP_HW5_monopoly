@@ -1,3 +1,4 @@
+// Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
 #ifndef BASE_RANDOM_GEN_H_
 #define BASE_RANDOM_GEN_H_
 
@@ -13,8 +14,8 @@ class RandomGen {
     int operator()();
 
  private:
-    std::mt19937* gen_;
-    std::uniform_int_distribution<int>* distribution_;
+    std::mt19937 gen_;
+    std::uniform_int_distribution<int> distribution_;
 };
 
 #endif  // BASE_RANDOM_GEN_H_
