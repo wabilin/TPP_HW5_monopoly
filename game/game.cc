@@ -16,7 +16,8 @@ const vector<string>
 Game::kDefaultPlayerNames({"A-Tu", "Little-Mei", "King-Baby", "Mrs.Money"});
 
 Game::Game()
-  :map_(nullptr), world_player_(nullptr), dice_(new RandomGen(1, kDiceSurface)) {}
+  :map_(nullptr), world_player_(nullptr), dice_(new RandomGen(1, kDiceSurface))
+    {}
 
 Game::~Game() {
     delete map_;
@@ -34,6 +35,7 @@ void Game::InitGame(FILE* map_file) {
     if (players_num < WorldPlayer::kMinPlayerNum
         || players_num > WorldPlayer::kMaxPlayerNum) {
             perror("Error at Game::GameInit(): wrong player num.\n");
+            exit(EXIT_FAILURE);
     }
 
     world_player_ = new WorldPlayer();
@@ -58,7 +60,9 @@ void Game::MainLoop() {
         player->set_move_point(player->move_point() + 1);
 
         while (player->move_point() > 0) {
-            printf("%s, your action? (1:Dice [default] / 2:Exit)...>", player->name().c_str());  // 2 == No == Exit
+            printf("%s, your action? (1:Dice [default] / 2:Exit)...>",
+                   player->name().c_str());
+            // 2 == No == Exit
             if (!GetYesOrNo()) { return; }
             MovePlayer(player, Dice());
 
@@ -80,8 +84,10 @@ void Game::MainLoop() {
 
         if (world_player_->FindWinner() != nullptr) {
             const Player* winner = world_player_->FindWinner();
-            printf("Player %d (%s) have won.\n",
+            printf("Player %d (%s) win!!\n",
                    winner->id(), winner->name().c_str());
+            Pause();
+            return;
         }
 
         Pause();
@@ -89,7 +95,7 @@ void Game::MainLoop() {
     }
 }
 
-void Game::PrintGameInfo() {
+void Game::PrintGameInfo()const {
     map_->Print();
     putchar('\n');
     world_player_->Print();

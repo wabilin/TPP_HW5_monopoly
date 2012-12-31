@@ -19,13 +19,13 @@ class Game {
     void MainLoop();
 
  private:
-    // pointers to new map and new players
-    // # NEED dealloca #
+    // pointers to new map, new players and new dice
+    // # NEED to be deallocated #
     WorldMap* map_;
     WorldPlayer* world_player_;
     RandomGen* dice_;
 
-    void PrintGameInfo();
+    void PrintGameInfo()const;
     int  Dice() const;
 
     // move, if pass O-Unit, gain reword

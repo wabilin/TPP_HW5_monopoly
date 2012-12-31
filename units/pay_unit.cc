@@ -21,7 +21,7 @@ int PayUnit::owner_id() const {
 }
 
 bool PayUnit::CanBuyBy(const Player* traveler) const {
-    return Abandoned() && traveler->money() > cost();
+    return Abandoned() && traveler->money() >= cost();
 }
 
 bool PayUnit::NeedFine(const Player* traveler)const {

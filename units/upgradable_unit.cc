@@ -14,7 +14,7 @@ UpgradableUnit::UpgradableUnit
      level_(0), fines_(fines) {}
 
 bool UpgradableUnit::CanUpgradeBy(const Player* traveler) const {
-    return (traveler->id() == owner_id())
+    return (traveler == owner_)
         && (owner_->money() > upgrade_cost())
         && level() < highest_level();
 }
