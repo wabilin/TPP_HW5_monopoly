@@ -9,6 +9,7 @@
 class WorldMap;
 class WorldPlayer;
 class Player;
+class RandomGen;
 
 class Game {
  public:
@@ -16,12 +17,15 @@ class Game {
     ~Game();
     void InitGame(FILE* map_file);
     void MainLoop();
+    int  Dice() const;
 
  private:
     // pointers to new map and new players
     // # NEED dealloca #
     WorldMap* map_;
     WorldPlayer* world_player_;
+    RandomGen* dice_;
+
     void PrintGameInfo();
     void DiceAndMove(Player* player);
 

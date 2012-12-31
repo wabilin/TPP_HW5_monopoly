@@ -3,7 +3,10 @@
 #include <cstdio>
 #include "game/game.h"
 
+#include "base/random_gen.h"
+
 int main(int argc, char** argv) {
+
     FILE* fptr = fopen("map.dat", "r");
 
     Game g;

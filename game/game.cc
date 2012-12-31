@@ -7,6 +7,7 @@
 #include "world/world_map.h"
 #include "world/world_player.h"
 #include "base/controll.h"
+#include "base/random_gen.h"
 
 using std::string;
 using std::vector;
@@ -15,11 +16,12 @@ const vector<string>
 Game::kDefaultPlayerNames({"A-Tu", "Little-Mei", "King-Baby", "Mrs.Money"});
 
 Game::Game()
-  :map_(nullptr), world_player_(nullptr) {}
+  :map_(nullptr), world_player_(nullptr), dice_(new RandomGen(1, kDiceSurface)) {}
 
 Game::~Game() {
     delete map_;
     delete world_player_;
+    delete dice_;
 }
 
 void Game::InitGame(FILE* map_file) {
@@ -50,13 +52,13 @@ void Game::MainLoop() {
         ClearScreen();
         PrintGameInfo();
 
-        printf("A-Tu, your action? (1:Dice [default] / 2:Exit)...>"); // 2 == No == Exit
+        printf("A-Tu, your action? (1:Dice [default] / 2:Exit)...>");  // 2 == No == Exit
         if (!GetYesOrNo()) { return; }
 
         Player* player = world_player_->PlayerOnTurn();
         player->set_move_point(player->move_point() + 1);
 
-        while(player->move_point() > 0) {
+        while (player->move_point() > 0) {
             DiceAndMove(player);
 
             ClearScreen();
@@ -80,11 +82,15 @@ void Game::PrintGameInfo() {
 }
 
 void Game::DiceAndMove(Player* player) {
-    int location = player->location() + (rand() % kDiceSurface);
+    unsigned location = player->location() + Dice();
     while (location >= map_->size()) {
         player->Gain(kOPointReword);
         printf("You gained $%d reword.\n", kOPointReword);
         location -= map_->size();
     }
     map_->MovePlayer(player->id(), location);
+}
+
+int Game::Dice() const {
+    return (*dice_)();
 }
