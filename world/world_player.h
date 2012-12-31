@@ -26,6 +26,14 @@ class WorldPlayer {
     // please send a "new" player in
     void AddPlayer(Player* player);
 
+    // return pointer to the winner if someone won
+    // return nullptr, otherwise
+    const Player* FindWinner() const;
+
+    // to kill the loser
+    // #NOTE# : player will be dealloca
+    void KillPlayer(int player_id);
+
     void Print()const;
 
  private:

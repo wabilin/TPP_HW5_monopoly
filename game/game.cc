@@ -70,6 +70,20 @@ void Game::MainLoop() {
             player->set_move_point(player->move_point() - 1);
         }
 
+        if (player->Crash()) {
+            printf("%s crashed.\n", player->name().c_str());
+
+            player->ReleaseUnits();
+            map_->PlayerOut(player);
+            world_player_->KillPlayer(player->id());
+        }
+
+        if (world_player_->FindWinner() != nullptr) {
+            const Player* winner = world_player_->FindWinner();
+            printf("Player %d (%s) have won.\n",
+                   winner->id(), winner->name().c_str());
+        }
+
         Pause();
         world_player_->NextTurn();
     }

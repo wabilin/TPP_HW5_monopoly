@@ -38,3 +38,30 @@ void WorldPlayer::Print()const {
                player->money(), player->units_num());
     }
 }
+
+const Player* WorldPlayer::FindWinner() const {
+    int live_count = 0;
+    for (auto& player : players_) {
+        if (player != nullptr) { ++live_count; }
+    }
+
+    if(live_count > 1) {
+        return nullptr;
+    } else {
+        Player* winner(nullptr);
+        for (auto& player : players_) {
+            if(player != nullptr) { winner = player; }
+        }
+        if (winner == nullptr) {
+            perror("Error at WorldPlayer::FindWinner(): no one are able to win.\n");
+            exit(EXIT_FAILURE);
+        }
+
+        return winner;
+    }
+}
+
+void WorldPlayer::KillPlayer(int player_id) {
+    delete players_[player_id];
+    players_[player_id] = nullptr;
+}

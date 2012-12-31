@@ -113,3 +113,7 @@ MapUnit* WorldMap::NewUnitByString(const std::string& unit_info, const int id) {
         exit(EXIT_FAILURE);
     }
 }
+
+void WorldMap::PlayerOut(Player* player) {
+    unit(player->location())->PlayerGo(player->id());
+}

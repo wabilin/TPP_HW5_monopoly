@@ -25,6 +25,9 @@ class WorldMap {
 
     void MovePlayer(int player_id, int unit_id);
 
+    // remove a player from map, non-dealloca
+    void PlayerOut(Player* player);
+
  private:
     // pointers to new units # NEED dealloca #
     std::vector<MapUnit*> units_;
