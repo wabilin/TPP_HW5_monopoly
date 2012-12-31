@@ -8,7 +8,8 @@
 #include "base/controll.h"
 using std::string;
 
-PayUnit::PayUnit(int id, const std::string& name, int players_num, int cost)
+PayUnit::PayUnit
+(int id, const std::string& name, int players_num, int cost)
   :MapUnit(id, name, players_num), cost_(cost), owner_(nullptr) {}
 
 
@@ -44,7 +45,8 @@ void PayUnit::AskBuy(Player* traveler) {
 void PayUnit::AskPay(Player* traveler) const {
     int fixed_fine = fine();
     printf("%s, you must pay $%d to Player %d (%s)\n",
-           traveler->name().c_str(), fixed_fine, owner_id(), owner_name().c_str());
+           traveler->name().c_str(), fixed_fine, owner_id(),
+           owner_name().c_str());
 
     traveler->Pay(fixed_fine);
     owner_->Gain(fixed_fine);
