@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <cstring>
 #include "player/player.h"
+#include "units/map_unit.h"
 #include "world/world_map.h"
 #include "world/world_player.h"
 #include "base/controll.h"
@@ -45,5 +46,45 @@ void Game::InitGame(FILE* map_file) {
 }
 
 void Game::MainLoop() {
+    while (true) {
+        ClearScreen();
+        PrintGameInfo();
+
+        printf("A-Tu, your action? (1:Dice [default] / 2:Exit)...>"); // 2 == No == Exit
+        if (!GetYesOrNo()) { return; }
+
+        Player* player = world_player_->PlayerOnTurn();
+        player->set_move_point(player->move_point() + 1);
+
+        while(player->move_point() > 0) {
+            DiceAndMove(player);
+
+            ClearScreen();
+            PrintGameInfo();
+
+            map_->unit(player->location())->TravelEven(player);
+
+            player->set_move_point(player->move_point() - 1);
+        }
+
+        Pause();
+        world_player_->NextTurn();
+    }
+}
+
+void Game::PrintGameInfo() {
     map_->Print();
+    putchar('\n');
+    world_player_->Print();
+    putchar('\n');
+}
+
+void Game::DiceAndMove(Player* player) {
+    int location = player->location() + (rand() % kDiceSurface);
+    while (location >= map_->size()) {
+        player->Gain(kOPointReword);
+        printf("You gained $%d reword.\n", kOPointReword);
+        location -= map_->size();
+    }
+    map_->MovePlayer(player->id(), location);
 }

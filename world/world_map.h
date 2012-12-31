@@ -15,6 +15,10 @@ class WorldMap {
     explicit WorldMap(WorldPlayer* world_player);
     virtual ~WorldMap();
 
+    unsigned size()const { return units_.size(); }
+    MapUnit* unit(int i) { return units_[i]; }
+    const MapUnit* unit(int i) const { return units_[i]; }
+
     void LoadMap(FILE* map_file);
     void Print()const;
 

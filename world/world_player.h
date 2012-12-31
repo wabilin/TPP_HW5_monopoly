@@ -17,11 +17,20 @@ class WorldPlayer {
     Player* player(int id) { return players_[id]; }
     const Player* player(int id) const { return players_[id]; }
 
+    Player*       PlayerOnTurn()       { return player(on_turn_); }
+    const Player* PlayerOnTurn() const { return player(on_turn_); }
+
+    // turn to next player
+    void NextTurn();
+
     // please send a "new" player in
     void AddPlayer(Player* player);
 
+    void Print()const;
+
  private:
     std::vector<Player*> players_;
+    unsigned on_turn_;
 };
 
 #endif  // WORLD_WORLD_PLAYER_H_

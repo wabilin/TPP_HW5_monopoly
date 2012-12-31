@@ -27,13 +27,13 @@ int unix_getch() {
 
 void Pause() {
 #ifdef __unix__
-    printf("Press Enter key to continue...");
+    printf("Press any key to continue...");
     unix_getch();
   #else
     #ifdef _WIN32
     system("pause");
     #else
-    printf("Press \"Enter\" to continue...");
+    printf("Press Enter key to continue...");
     scanf("%*c");
     #endif
 #endif
