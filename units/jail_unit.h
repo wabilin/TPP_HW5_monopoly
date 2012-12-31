@@ -8,7 +8,10 @@
 class JailUnit : public MapUnit {
  public:
     explicit JailUnit(int id, const std::string& name, int player_num);
-    void StopAct(Player* player);
+
+    // override MapUnit
+    void TravelEven(Player* traveler);
+    void PrintInfo()const;
 };
 
 #endif  // UNITS_JAIL_UNIT_H_

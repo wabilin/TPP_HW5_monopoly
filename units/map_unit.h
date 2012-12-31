@@ -19,7 +19,7 @@ class MapUnit {
     void PlayerCome(int player_id);
     void PlayerGo(int player_id);
 
-    virtual void PrintInfo () const = 0;
+    virtual void PrintInfo() const = 0;
 
     // call even while a player is traveling the unit
     virtual void TravelEven(Player* traveler) = 0;

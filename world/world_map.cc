@@ -7,6 +7,7 @@
 #include "units/map_unit.h"
 #include "units/upgradable_unit.h"
 #include "units/random_cost_unit.h"
+#include "units/jail_unit.h"
 #include "world/world_player.h"
 #include "player/player.h"
 #include "base/controll.h"
@@ -86,14 +87,19 @@ MapUnit* WorldMap::NewUnitByString(const std::string& unit_info, const int id) {
         }
         return new UpgradableUnit
             (id, name, world_player_->player_num(), cost, upgrade_cost, fines);
-        break;
+    break;
 
     case 'R':
         int base_fine;
         ss >> cost >> base_fine;
         return new RandomCostUnit
             (id, name, world_player_->player_num(), cost, base_fine);
-        break;
+    break;
+
+    case 'J':
+        return new JailUnit
+            (id, name, world_player_->player_num());
+    break;
 
     default:
         perror("Error at WorldMap::LoadMap : Unknown symbol read.\n");

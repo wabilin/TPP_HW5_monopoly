@@ -6,11 +6,13 @@
 JailUnit::JailUnit(int id, const std::string& name, int player_num)
   :MapUnit(id, name, player_num) {}
 
-void JailUnit::StopAct(Player* player) {
-    player->set_move_point(-1);
+void JailUnit::TravelEven(Player* traveler) {
+    traveler->set_move_point(-1);
 
-    printf("%s, you have been frozen :DDD\n", player->name().c_str());
-    Pause();
+    printf("%s, you have been frozen :DDD\n", traveler->name().c_str());
 }
 
-
+void JailUnit::PrintInfo()const {
+    PrintBasicInfo();
+    printf(" ^o^-c orz =: ");
+}

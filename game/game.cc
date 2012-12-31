@@ -52,13 +52,12 @@ void Game::MainLoop() {
         ClearScreen();
         PrintGameInfo();
 
-        printf("A-Tu, your action? (1:Dice [default] / 2:Exit)...>");  // 2 == No == Exit
-        if (!GetYesOrNo()) { return; }
-
         Player* player = world_player_->PlayerOnTurn();
         player->set_move_point(player->move_point() + 1);
 
         while (player->move_point() > 0) {
+            printf("%s, your action? (1:Dice [default] / 2:Exit)...>", player->name().c_str());  // 2 == No == Exit
+            if (!GetYesOrNo()) { return; }
             DiceAndMove(player);
 
             ClearScreen();
@@ -86,6 +85,7 @@ void Game::DiceAndMove(Player* player) {
     while (location >= map_->size()) {
         player->Gain(kOPointReword);
         printf("You gained $%d reword.\n", kOPointReword);
+        Pause();
         location -= map_->size();
     }
     map_->MovePlayer(player->id(), location);
