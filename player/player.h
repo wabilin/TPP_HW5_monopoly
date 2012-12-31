@@ -32,8 +32,8 @@ class Player {
     const int id_;
     std::string name_;
     int money_;
-    int location_;  // init = 0
     std::vector<PayUnit*> units_;
+    int location_;  // init = 0
 
     // times that player can dice in a turn
     int move_point_;  // init = 0
