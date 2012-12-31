@@ -11,15 +11,14 @@ class Player;
 class WorldMap {
  public:
     WorldMap(const WorldMap&) = delete;
-    explicit WorldMap(int players_num);
+    explicit WorldMap();
     virtual ~WorldMap();
 
-    void LoadMap(FILE* map_file);
+    void LoadMap(FILE* map_file, int players_num);
     void Print()const;
 
  private:
     std::vector<MapUnit*> units_;
-    int players_num_;
 };
 
 #endif  // WORLD_WORLD_MAP_H_

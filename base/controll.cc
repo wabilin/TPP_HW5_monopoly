@@ -2,6 +2,12 @@
 #include "base/controll.h"
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
+#include <string>
+
+#include <memory>
+
+using std::string;
 
 #ifdef __unix__
   #include <termios.h>
@@ -54,4 +60,18 @@ bool GetYesOrNo() {
     fgets(msg, kMaxMsgLength, stdin);
 
     return msg[0] != '2';
+}
+
+string GetLine(const int max_length, FILE* fptr) {
+    char line[max_length], *s_ptr;
+    s_ptr = fgets(line, max_length, fptr);
+    if (!s_ptr) {
+        perror("Error at GetLine: EOF or read error.\n");
+        return string("");
+    }
+
+    // replace '\n' at the end of string
+    line[strlen(line) - 1] = '\0';
+
+    return string(line);
 }

@@ -13,8 +13,7 @@ using std::vector;
 using std::array;
 using std::stringstream;
 
-WorldMap::WorldMap(int players_num)
-  :players_num_(players_num) {}
+WorldMap::WorldMap() {}
 
 WorldMap::~WorldMap() {
     for (auto& ptr : units_) {
@@ -22,7 +21,7 @@ WorldMap::~WorldMap() {
     }
 }
 
-void WorldMap::LoadMap(FILE* file) {
+void WorldMap::LoadMap(FILE* file, int players_num) {
     static const size_t kLineLength = 128;
     char line[kLineLength] = {'\0'};
 
@@ -42,7 +41,7 @@ void WorldMap::LoadMap(FILE* file) {
                 ss >> fine;
             }
             units_.push_back(new UpgradableUnit
-                (id, name, players_num_, cost, upgrade_cost, fines));
+                (id, name, players_num, cost, upgrade_cost, fines));
         break;
 
         default:
