@@ -19,11 +19,11 @@ class Player {
     void set_move_point(int p) { move_point_ = p; }
     int  location() const { return location_; }
     void move_location(int location) { location_ = location; }
-    int  units_num() const     { return units_.size(); }
+    int  units_num() const { return units_.size(); }
 
     int  money() const { return money_; }
     void Gain(int money) { money_ += money; }
-    void Pay (int money) { money_ -= money; }
+    void Pay(int money)  { money_ -= money; }
     void AddUnit(PayUnit* unit) { units_.push_back(unit); }
 
     bool Crash() const { return money() < 0; }
@@ -41,8 +41,6 @@ class Player {
 
     // times that player can dice in a turn
     int move_point_;  // init = 0
-
-
 };
 
 #endif  // PLAYER_PLAYER_H_
