@@ -8,7 +8,8 @@
 // A virtual class for units can be bought
 class PayUnit : public MapUnit {
  public:
-    PayUnit(int id, const std::string& name, int players_num, int cost);
+    explicit PayUnit
+    (int id, const std::string& name, int players_num, int cost);
 
     virtual int fine() const = 0;
     int cost()const { return cost_; }

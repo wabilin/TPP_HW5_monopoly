@@ -1,7 +1,7 @@
 // Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
 #include "units/upgradable_unit.h"
-#include <string>
 #include <array>
+#include <string>
 #include "player/player.h"
 #include "base/controll.h"
 using std::string;
