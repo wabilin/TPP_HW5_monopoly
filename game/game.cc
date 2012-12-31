@@ -74,21 +74,8 @@ void Game::MainLoop() {
             player->set_move_point(player->move_point() - 1);
         }
 
-        if (player->Crash()) {
-            printf("%s crashed.\n", player->name().c_str());
-
-            player->ReleaseUnits();
-            map_->PlayerOut(player);
-            world_player_->KillPlayer(player->id());
-        }
-
-        if (world_player_->FindWinner() != nullptr) {
-            const Player* winner = world_player_->FindWinner();
-            printf("Player %d (%s) win!!\n",
-                   winner->id(), winner->name().c_str());
-            Pause();
-            return;
-        }
+        CheckCrashed(player);
+        if (CheckWon()) { return; }
 
         Pause();
         world_player_->NextTurn();
@@ -115,4 +102,26 @@ void Game::MovePlayer(Player* player, int step) {
 
 int Game::Dice() const {
     return (*dice_)();
+}
+
+void Game::CheckCrashed(Player* player) {
+     if (player->Crash()) {
+        printf("%s crashed.\n", player->name().c_str());
+
+        player->ReleaseUnits();
+        map_->PlayerOut(player);
+        world_player_->KillPlayer(player->id());
+    }
+}
+
+bool Game::CheckWon() {
+    if (world_player_->FindWinner() != nullptr) {
+        const Player* winner = world_player_->FindWinner();
+        printf("Player %d (%s) win!!\n",
+               winner->id(), winner->name().c_str());
+        Pause();
+        return true;
+    }
+
+    return false;
 }

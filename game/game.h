@@ -31,6 +31,13 @@ class Game {
     // move, if pass O-Unit, gain reword
     void MovePlayer(Player* player, int step);
 
+    // check if one have been crashed,
+    // if os, release his units, take him out from map, kill him.
+    void CheckCrashed(Player* player);
+
+    // if someone won, show message and return true
+    bool CheckWon();
+
     static const int kStartMoney = 30000;
     static const int kDiceSurface = 6;
     static const int kOPointReword = 400;
