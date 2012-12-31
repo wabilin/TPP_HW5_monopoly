@@ -17,9 +17,12 @@ class Game {
     void MainLoop();
 
  private:
+    // pointers to new map and new players
+    // # NEED dealloca #
     WorldMap* map_;
     WorldPlayer* world_player_;
 
+    static const int kStartMoney = 30000;
     static const std::vector<std::string> kDefaultPlayerNames;
 };
 

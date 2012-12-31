@@ -17,6 +17,8 @@ class Player {
 
     int  move_point() const    { return move_point_; }
     void set_move_point(int p) { move_point_ = p; }
+    int  location() const { return location_; }
+    void move_location(int location) { location_ = location; }
     int  units_num() const     { return units_.size(); }
 
     int  money() const { return money_; }
@@ -30,10 +32,11 @@ class Player {
     const int id_;
     std::string name_;
     int money_;
+    int location_;  // init = 0
     std::vector<PayUnit*> units_;
 
     // times that player can dice in a turn
-    int move_point_;
+    int move_point_;  // init = 0
 };
 
 #endif  // PLAYER_PLAYER_H_

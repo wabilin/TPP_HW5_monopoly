@@ -20,3 +20,10 @@ void MapUnit::PrintBasicInfo()const {
     // show unit name & id
     printf("  [%d]%10s ", id(), name().c_str());
 }
+
+void MapUnit::PlayerCome(int player_id) {
+    here_players_[player_id] = true;
+}
+void MapUnit::PlayerGo(int player_id) {
+    here_players_[player_id] = false;
+}

@@ -15,6 +15,10 @@ class MapUnit {
     int id() const { return id_; }
     const std::string& name() const { return name_; }
 
+    // to reflash here_players_
+    void PlayerCome(int player_id);
+    void PlayerGo(int player_id);
+
     virtual void PrintInfo () const = 0;
 
     // call even while a player is traveling the unit

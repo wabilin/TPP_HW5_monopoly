@@ -7,13 +7,16 @@
 #include <array>
 #include "units/map_unit.h"
 #include "units/upgradable_unit.h"
+#include "world/world_player.h"
+#include "player/player.h"
 
 using std::string;
 using std::vector;
 using std::array;
 using std::stringstream;
 
-WorldMap::WorldMap() {}
+WorldMap::WorldMap(WorldPlayer* world_player)
+  :world_player_(world_player) {}
 
 WorldMap::~WorldMap() {
     for (auto& ptr : units_) {
@@ -21,7 +24,7 @@ WorldMap::~WorldMap() {
     }
 }
 
-void WorldMap::LoadMap(FILE* file, int players_num) {
+void WorldMap::LoadMap(FILE* file) {
     static const size_t kLineLength = 128;
     char line[kLineLength] = {'\0'};
 
@@ -41,7 +44,7 @@ void WorldMap::LoadMap(FILE* file, int players_num) {
                 ss >> fine;
             }
             units_.push_back(new UpgradableUnit
-                (id, name, players_num, cost, upgrade_cost, fines));
+                (id, name, world_player_->player_num(), cost, upgrade_cost, fines));
         break;
 
         default:
@@ -55,6 +58,8 @@ void WorldMap::LoadMap(FILE* file, int players_num) {
     if (units_.size() % 2 != 0) {
         perror("Error at WorldMap::LoadMap: Odd num units.\n");
     }
+
+    InitPlayersLocation();
 }
 
 void WorldMap::Print()const {
@@ -65,5 +70,22 @@ void WorldMap::Print()const {
         printf("    ");
         units_[kLastId- i]->PrintInfo();
         putchar('\n');
+    }
+}
+
+void WorldMap::MovePlayer(int player_id, int unit_id) {
+    Player* player = world_player_->player(player_id);
+    int old_location = player->location();
+
+    player->move_location(unit_id);
+
+    units_[old_location]->PlayerGo(player_id);
+    units_[unit_id]->PlayerCome(player_id);
+}
+
+
+void WorldMap::InitPlayersLocation() {
+    for (int i = 0 ; i < world_player_->player_num() ; ++i) {
+        units_[0]->PlayerCome(i);
     }
 }

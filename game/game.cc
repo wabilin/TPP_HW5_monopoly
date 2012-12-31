@@ -2,6 +2,7 @@
 #include "game/game.h"
 #include <cstdio>
 #include <cstring>
+#include "player/player.h"
 #include "world/world_map.h"
 #include "world/world_player.h"
 #include "base/controll.h"
@@ -30,16 +31,17 @@ void Game::InitGame(FILE* map_file) {
             perror("Error at Game::GameInit(): wrong player num.\n");
     }
 
-    vector<string> player_names(players_num);
+    world_player_ = new WorldPlayer();
     for (int i = 0 ; i < players_num ; ++i) {
         printf("Please input player %d's name (Default: %s)...>",
                i+1, kDefaultPlayerNames[i].c_str());
         string name = GetLine();
-        player_names[i] = (name.size() != 0)? name : kDefaultPlayerNames[i];
+        name = (name.size() != 0)? name : kDefaultPlayerNames[i];
+        world_player_->AddPlayer(new Player(i, name, kStartMoney));
     }
 
-    map_ = new WorldMap();
-    map_->LoadMap(map_file, players_num);
+    map_ = new WorldMap(world_player_);
+    map_->LoadMap(map_file);
 }
 
 void Game::MainLoop() {
