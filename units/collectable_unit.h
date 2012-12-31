@@ -7,7 +7,7 @@
 #include <string>
 #include "units/pay_unit.h"
 
-class CollectableUnit : PayUnit {
+class CollectableUnit : public PayUnit {
  public:
     explicit CollectableUnit
     (int id, const std::string& name, int players_num, int cost, int base_fine);

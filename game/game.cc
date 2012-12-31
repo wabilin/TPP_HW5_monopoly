@@ -26,6 +26,8 @@ Game::~Game() {
 
 void Game::InitGame(FILE* map_file) {
     int players_num;
+
+    ClearScreen();
     printf("How many players?(Maximum:%d)...>",
             WorldPlayer::kMaxPlayerNum);
     scanf("%d%*c", &players_num);
@@ -58,7 +60,7 @@ void Game::MainLoop() {
         while (player->move_point() > 0) {
             printf("%s, your action? (1:Dice [default] / 2:Exit)...>", player->name().c_str());  // 2 == No == Exit
             if (!GetYesOrNo()) { return; }
-            DiceAndMove(player);
+            MovePlayer(player, Dice());
 
             ClearScreen();
             PrintGameInfo();
@@ -80,8 +82,8 @@ void Game::PrintGameInfo() {
     putchar('\n');
 }
 
-void Game::DiceAndMove(Player* player) {
-    unsigned location = player->location() + Dice();
+void Game::MovePlayer(Player* player, int step) {
+    unsigned location = player->location() + step;
     while (location >= map_->size()) {
         player->Gain(kOPointReword);
         printf("You gained $%d reword.\n", kOPointReword);

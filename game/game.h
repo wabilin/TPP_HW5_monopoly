@@ -26,8 +26,10 @@ class Game {
     RandomGen* dice_;
 
     void PrintGameInfo();
-    void DiceAndMove(Player* player);
     int  Dice() const;
+
+    // move, if pass O-Unit, gain reword
+    void MovePlayer(Player* player, int step);
 
     static const int kStartMoney = 30000;
     static const int kDiceSurface = 6;

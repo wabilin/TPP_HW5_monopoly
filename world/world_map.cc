@@ -8,6 +8,7 @@
 #include "units/upgradable_unit.h"
 #include "units/random_cost_unit.h"
 #include "units/jail_unit.h"
+#include "units/collectable_unit.h"
 #include "world/world_player.h"
 #include "player/player.h"
 #include "base/controll.h"
@@ -73,7 +74,7 @@ void WorldMap::InitPlayersLocation() {
 MapUnit* WorldMap::NewUnitByString(const std::string& unit_info, const int id) {
     stringstream ss(unit_info);
     char unit_symbol;
-    int cost;
+    int cost, base_fine;;
     string name;
     ss >> unit_symbol >> name;
 
@@ -90,10 +91,16 @@ MapUnit* WorldMap::NewUnitByString(const std::string& unit_info, const int id) {
     break;
 
     case 'R':
-        int base_fine;
         ss >> cost >> base_fine;
         return new RandomCostUnit
             (id, name, world_player_->player_num(), cost, base_fine);
+    break;
+
+    case 'C':
+        ss >> cost >> base_fine;
+        return new CollectableUnit
+            (id, name, world_player_->player_num(), cost, base_fine);
+
     break;
 
     case 'J':
