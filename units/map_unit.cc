@@ -1,5 +1,5 @@
 // Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
-#include "map_unit.h"
+#include "units/map_unit.h"
 
 MapUnit::MapUnit(int id, const std::string& name, int player_num)
   :id_(id), name_(name), here_players_(player_num, false) {}
@@ -8,9 +8,9 @@ MapUnit::MapUnit(int id, const std::string& name, int player_num)
 void MapUnit::PrintBasicInfo()const {
     // show player here
     putchar('=');
-    for (size_t i = 0 ; i < here_players_.size() ; ++i) {
+    for (unsigned i = 0 ; i < here_players_.size() ; ++i) {
         if (here_players_[i]) {
-            printf("%d", static_cast<int>(i));  // cast to avoid compiler warning
+            printf("%u", i);
         } else {
             printf(" ");
         }

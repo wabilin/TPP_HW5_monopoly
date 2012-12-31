@@ -1,6 +1,6 @@
 // Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
-#ifndef MAP_UNIT_H_
-#define MAP_UNIT_H_
+#ifndef UNITS_MAP_UNIT_H_
+#define UNITS_MAP_UNIT_H_
 
 #include <string>
 #include <vector>
@@ -33,4 +33,4 @@ class MapUnit {
     void PrintBasicInfo() const;
 };
 
-#endif  // MAP_UNIT_H_
+#endif  // UNITS_MAP_UNIT_H_
