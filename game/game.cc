@@ -64,14 +64,13 @@ void Game::MainLoop() {
                    player->name().c_str());
             // 2 == No == Exit
             if (!GetYesOrNo()) { return; }
+            player->set_move_point(player->move_point() - 1);
             MovePlayer(player, Dice());
 
             ClearScreen();
             PrintGameInfo();
 
             map_->unit(player->location())->TravelEven(player);
-
-            player->set_move_point(player->move_point() - 1);
         }
 
         CheckCrashed(player);
