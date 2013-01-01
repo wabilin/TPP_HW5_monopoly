@@ -107,6 +107,7 @@ MapUnit* WorldMap::NewUnitByString
 
     default:
         Die("Unknown symbol read. (WorldMap::NewUnitByString)");
+        return nullptr;  // to avoid compiler waring, never go to this line
     }
 }
 
