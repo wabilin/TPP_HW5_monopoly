@@ -18,7 +18,7 @@ class WorldMap {
     WorldMap(const WorldMap&) = delete;
     WorldMap& operator=(const WorldMap&) = delete;
 
-    unsigned size()const { return units_.size(); }
+    size_t size()const { return units_.size(); }
     MapUnit* unit(int i) { return units_[i]; }
     const MapUnit* unit(int i) const { return units_[i]; }
 
@@ -27,11 +27,11 @@ class WorldMap {
 
     void MovePlayer(int player_id, int unit_id);
 
-    // remove a player from map, non-dealloca
-    void PlayerOut(Player* player);
+    // remove a player from map, non-deallocation
+    void PlayerOut(const Player* player);
 
  private:
-    // pointers to new units # NEED dealloca #
+    // pointers to new units # NEED deallocation #
     std::vector<MapUnit*> units_;
 
     // relate to players,
@@ -42,7 +42,8 @@ class WorldMap {
     void InitPlayersLocation();
 
     // parse the string(unit info), return a new MapUnit object
-    MapUnit* NewUnitByString(const std::string& unit_info, const int id);
+    static MapUnit* NewUnitByString
+    (const std::string& unit_info, const int id, const int player_num);
 };
 
 #endif  // WORLD_WORLD_MAP_H_

@@ -1,6 +1,5 @@
 // Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
 #include "world/world_map.h"
-#include <stddef.h>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -33,7 +32,7 @@ void WorldMap::LoadMap(FILE* file) {
         line = GetLine(file);
         if (line.size() == 0) { break; }
 
-        units_.push_back(NewUnitByString(line, i));
+        units_.push_back(NewUnitByString(line, i, world_player_->player_num()));
     }
 
     if (units_.size() % 2 != 0) {
@@ -56,12 +55,10 @@ void WorldMap::Print()const {
 
 void WorldMap::MovePlayer(int player_id, int unit_id) {
     Player* player = world_player_->player(player_id);
-    int old_location = player->location();
 
-    player->move_location(unit_id);
-
-    units_[old_location]->PlayerGo(player_id);
+    units_[player->location()]->PlayerGo(player_id);
     units_[unit_id]->PlayerCome(player_id);
+    player->move_location(unit_id);
 }
 
 
@@ -71,10 +68,11 @@ void WorldMap::InitPlayersLocation() {
     }
 }
 
-MapUnit* WorldMap::NewUnitByString(const std::string& unit_info, const int id) {
+MapUnit* WorldMap::NewUnitByString
+(const std::string& unit_info, const int id, const int player_num) {
     stringstream ss(unit_info);
     char unit_symbol;
-    int cost, base_fine;;
+    int cost, base_fine;
     string name;
     ss >> unit_symbol >> name;
 
@@ -87,33 +85,32 @@ MapUnit* WorldMap::NewUnitByString(const std::string& unit_info, const int id) {
             ss >> fine;
         }
         return new UpgradableUnit
-            (id, name, world_player_->player_num(), cost, upgrade_cost, fines);
+            (id, name, player_num, cost, upgrade_cost, fines);
     break;
 
     case 'R':
         ss >> cost >> base_fine;
         return new RandomCostUnit
-            (id, name, world_player_->player_num(), cost, base_fine);
+            (id, name, player_num, cost, base_fine);
     break;
 
     case 'C':
         ss >> cost >> base_fine;
         return new CollectableUnit
-            (id, name, world_player_->player_num(), cost, base_fine);
-
+            (id, name, player_num, cost, base_fine);
     break;
 
     case 'J':
         return new JailUnit
-            (id, name, world_player_->player_num());
+            (id, name, player_num);
     break;
 
     default:
-        perror("Error at WorldMap::LoadMap : Unknown symbol read.\n");
+        perror("Error at WorldMap::NewUnitByString : Unknown symbol read.\n");
         exit(EXIT_FAILURE);
     }
 }
 
-void WorldMap::PlayerOut(Player* player) {
+void WorldMap::PlayerOut(const Player* player) {
     unit(player->location())->PlayerGo(player->id());
 }

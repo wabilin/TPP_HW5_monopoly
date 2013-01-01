@@ -1,3 +1,4 @@
+// Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
 #ifndef WORLD_WORLD_PLAYER_H_
 #define WORLD_WORLD_PLAYER_H_
 
