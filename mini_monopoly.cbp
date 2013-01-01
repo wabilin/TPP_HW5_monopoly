@@ -36,6 +36,7 @@
 			<Add option="-std=c++0x" />
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add directory="./" />
 		</Compiler>
 		<Unit filename="base/controll.cc" />
 		<Unit filename="base/controll.h" />
