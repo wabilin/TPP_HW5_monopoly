@@ -35,8 +35,7 @@ void Game::InitGame(FILE* map_file) {
     scanf("%d%*c", &players_num);
     if (players_num < WorldPlayer::kMinPlayerNum
         || players_num > WorldPlayer::kMaxPlayerNum) {
-            perror("Error at Game::GameInit(): wrong player num.\n");
-            exit(EXIT_FAILURE);
+            Die("Wrong player num (Game::GameInit)");
     }
 
     world_player_ = new WorldPlayer();

@@ -19,4 +19,7 @@ bool GetYesOrNo();
 // return string("") when read EOF or error
 std::string GetLine(FILE* fptr = stdin, const int max_length = 256);
 
+// print error msg and exit program
+void Die(const char* reason);
+
 #endif  // BASE_CONTROLL_H_

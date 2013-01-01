@@ -74,3 +74,8 @@ string GetLine(FILE* fptr, const int max_length) {
 
     return string(line);
 }
+
+void Die(const char* reason) {
+    fprintf(stderr, "Error : %s\n", reason);
+    exit(EXIT_FAILURE);
+}

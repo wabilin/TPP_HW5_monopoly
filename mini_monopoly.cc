@@ -1,9 +1,26 @@
 // Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
 
+// ==== ==== <TPP HW5> Mini Monopoly ==== ====
+// author : N.S.Lin
+// Email  : 499470256@ntnu.edu.tw
+//
+// ==== ==== # NOTE # ==== ====
+// Compiler:
+//  GCC 4.6 or later versions in Linux (suggested)
+//  MinGW 4.6 or later versions in Windows
+//  @see : README.md
+//
+// Project:
+//  to build project in Windows:
+//   Code::Blocks will miss the project setting (bug?)
+//   in Code::Blocks click Project->Build options->Search dir..
+//   add the folder where "mini_monopoly.cbp" is
+
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include "game/game.h"
+#include "base/controll.h"
 
 // get filepath from command, or use default
 FILE* GetFile(int argc, char** argv) {
@@ -16,8 +33,7 @@ FILE* GetFile(int argc, char** argv) {
 
     FILE* fptr = fopen(filepath, "r");
     if (!fptr) {
-        fprintf(stderr, "Error at MapFile: can not open file: %s\n", filepath);
-        exit(EXIT_FAILURE);
+        Die("Can not open map file. (::MapFile)");
     }
     return fptr;
 }

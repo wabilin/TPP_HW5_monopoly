@@ -1,6 +1,5 @@
 // Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
 #include "world/world_map.h"
-#include <cstdlib>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -37,7 +36,7 @@ void WorldMap::LoadMap(FILE* file) {
     }
 
     if (units_.size() % 2 != 0) {
-        perror("Error at WorldMap::LoadMap: Odd num units.\n");
+        Die("Odd num units. (WorldMap::LoadMap)");
     }
 
     InitPlayersLocation();
@@ -107,8 +106,7 @@ MapUnit* WorldMap::NewUnitByString
     break;
 
     default:
-        perror("Error at WorldMap::NewUnitByString : Unknown symbol read.\n");
-        exit(EXIT_FAILURE);
+        Die("Unknown symbol read. (WorldMap::NewUnitByString)");
     }
 }
 

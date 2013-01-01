@@ -30,10 +30,10 @@ void UpgradableUnit::AskUpgrade() {
 
 void UpgradableUnit::Upgrade() {
     if (level() >= highest_level()) {
-        perror("Error at UpgradableUnit::Upgrade(): over highest level.\n");
+        Die("Over highest level. (UpgradableUnit::Upgrade)");
     }
     if (owner_->money() <= upgrade_cost()) {
-        perror("Error at UpgradableUnit::Upgrade(): no enough money.\n");
+        Die("No enough money (UpgradableUnit::Upgrade)");
     }
 
     owner_->Pay(upgrade_cost());

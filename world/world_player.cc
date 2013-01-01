@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include "player/player.h"
+#include "base/controll.h"
 
 WorldPlayer::WorldPlayer()
   :players_(0), on_turn_(0) {}
@@ -56,9 +57,7 @@ const Player* WorldPlayer::FindWinner() const {
             if (player != nullptr) { winner = player; }
         }
         if (winner == nullptr) {
-            perror
-            ("Error at WorldPlayer::FindWinner(): no one are able to win.\n");
-            exit(EXIT_FAILURE);
+            Die("No one are able to win. (WorldPlayer::FindWinner)");
         }
 
         return winner;
