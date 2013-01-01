@@ -1,6 +1,7 @@
 // Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
 #include "game/game.h"
 #include <cstdio>
+#include <cstdlib>
 #include <cstring>
 #include "player/player.h"
 #include "units/map_unit.h"

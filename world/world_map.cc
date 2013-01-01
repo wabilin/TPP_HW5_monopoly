@@ -1,5 +1,6 @@
 // Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
 #include "world/world_map.h"
+#include <cstdlib>
 #include <sstream>
 #include <string>
 #include <vector>

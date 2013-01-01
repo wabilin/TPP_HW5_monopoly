@@ -20,7 +20,7 @@ int RandomGen::operator()() {
 
 RandomGen::RandomGen(int min, int max)
   : kRange_(max-min+1), kMin_(min) {
-    srand(time(NULL))
+    srand(time(NULL));
 }
 
 
