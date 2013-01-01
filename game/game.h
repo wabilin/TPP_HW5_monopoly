@@ -15,6 +15,10 @@ class Game {
  public:
     Game();
     ~Game();
+
+    Game(const Game&) = delete;
+    Game& operator=(const Game&) = delete;
+
     void InitGame(FILE* map_file);
     void MainLoop();
 

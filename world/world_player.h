@@ -12,6 +12,8 @@ class WorldPlayer {
 
     WorldPlayer();
     ~WorldPlayer();
+    WorldPlayer(const WorldPlayer&) = delete;
+    WorldPlayer& operator=(const WorldPlayer&) = delete;
 
     int player_num() const { return players_.size(); }
     Player* player(int id) { return players_[id]; }

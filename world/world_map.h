@@ -12,9 +12,11 @@ class WorldPlayer;
 
 class WorldMap {
  public:
-    WorldMap(const WorldMap&) = delete;
     explicit WorldMap(WorldPlayer* world_player);
     virtual ~WorldMap();
+
+    WorldMap(const WorldMap&) = delete;
+    WorldMap& operator=(const WorldMap&) = delete;
 
     unsigned size()const { return units_.size(); }
     MapUnit* unit(int i) { return units_[i]; }
