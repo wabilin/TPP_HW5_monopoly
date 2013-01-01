@@ -6,9 +6,9 @@
 
 // get filepath from command, or use default
 FILE* GetFile(int argc, char** argv) {
-    const char* filepath = "map.dat"; // default
+    const char* filepath = "map.dat";  // default
     for (int i = 0 ; i < argc - 1 ; ++i) {
-        if(strcmp(argv[i], "-f") == 0) {
+        if (strcmp(argv[i], "-f") == 0) {
             filepath = argv[i+1];
         }
     }

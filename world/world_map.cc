@@ -21,7 +21,7 @@ WorldMap::WorldMap(WorldPlayer* world_player)
   :world_player_(world_player) {}
 
 WorldMap::~WorldMap() {
-    for (auto& ptr : units_) {
+    for (auto ptr : units_) {
         delete ptr;
     }
 }

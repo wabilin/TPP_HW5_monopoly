@@ -12,7 +12,7 @@ Player::Player(int id, const string& name, int money)
 Player::~Player() {}
 
 void Player::ReleaseUnits() {
-    for (auto& unit : units_) {
+    for (auto unit : units_) {
         unit->Release();
     }
 }
