@@ -6,7 +6,7 @@ WorldPlayer::WorldPlayer()
   :players_(0), on_turn_(0) {}
 
 WorldPlayer::~WorldPlayer() {
-    for (auto& ptr : players_) {
+    for (auto ptr : players_) {
         delete ptr;
     }
 }
@@ -42,19 +42,20 @@ void WorldPlayer::Print()const {
 
 const Player* WorldPlayer::FindWinner() const {
     int live_count = 0;
-    for (auto& player : players_) {
+    for (auto player : players_) {
         if (player != nullptr) { ++live_count; }
     }
 
-    if(live_count > 1) {
+    if (live_count > 1) {
         return nullptr;
     } else {
         Player* winner(nullptr);
-        for (auto& player : players_) {
-            if(player != nullptr) { winner = player; }
+        for (auto player : players_) {
+            if (player != nullptr) { winner = player; }
         }
         if (winner == nullptr) {
-            perror("Error at WorldPlayer::FindWinner(): no one are able to win.\n");
+            perror
+            ("Error at WorldPlayer::FindWinner(): no one are able to win.\n");
             exit(EXIT_FAILURE);
         }
 
