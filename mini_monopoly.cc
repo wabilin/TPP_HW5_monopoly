@@ -1,6 +1,7 @@
 // Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
 
 #include <cstdio>
+#include <cstdlib>
 #include <cstring>
 #include "game/game.h"
 

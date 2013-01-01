@@ -1,5 +1,7 @@
 // Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
 #include "world/world_player.h"
+#include <cstdio>
+#include <cstdlib>
 #include "player/player.h"
 
 WorldPlayer::WorldPlayer()

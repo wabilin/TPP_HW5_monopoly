@@ -1,5 +1,6 @@
 // Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
 #include "units/map_unit.h"
+#include <cstdio>
 
 MapUnit::MapUnit(int id, const std::string& name, int player_num)
   :id_(id), name_(name), here_players_(player_num, false) {}

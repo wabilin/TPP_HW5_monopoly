@@ -1,6 +1,7 @@
 // Copyright 2012 N.S.Lin @ CSEI.NTNU@Taiwan
 
 #include "units/collectable_unit.h"
+#include <cstdio>
 #include <map>
 
 using std::map;
